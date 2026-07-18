@@ -45,7 +45,7 @@
 
 ### 2. 克隆项目
 ```bash
-git clone https://github.com/your-username/nav-site.git
+git clone https://github.com//luochen-zhang/lc_navigation.git
 cd nav-site
 ```
 
@@ -86,7 +86,7 @@ CREATE TABLE category_orders (
 ```
 
 ### 4. 配置 KV 存储
-在 Cloudflare Dashboard 中创建一个 KV 命名空间，例如 `NAV_AUTH`，用于存储会话和站点配置。  
+在 Cloudflare Dashboard 中创建一个 KV 命名空间，**NAV_AUTH**，用于存储会话和站点配置。  
 然后在 `wrangler.toml` 中绑定：
 
 ```toml
@@ -96,7 +96,10 @@ kv_namespaces = [
 ```
 
 ### 5. 设置管理员账号
-首次启动后，需要通过 `wrangler` 或 Cloudflare 的 `KV` 控制台手动写入管理员账号密码：
+首次启动后，需要通过 Cloudflare 的 `KV` 控制台手动写入管理员账号密码：
+手动创建KV对
+**admin_username：your-admin-nam
+admin_password：your-strong-password**
 
 ```bash
 # 使用 wrangler 命令行
@@ -105,9 +108,7 @@ wrangler kv:key put --binding=NAV_AUTH "admin_password" "your-strong-password"
 ```
 
 ### 6. 部署 Worker
-```bash
-wrangler deploy
-```
+直接将index.js代码复制到worker
 
 完成后，访问你的 Worker 域名（或自定义域名）即可看到前台页面，访问 `/admin` 进入后台登录。
 
@@ -122,7 +123,6 @@ git pull origin main
 wrangler deploy
 ```
 
-如果涉及数据库表结构变更，请查看 `CHANGELOG.md` 中的迁移说明（如有），并手动执行相应的 `ALTER TABLE` 语句。
 
 ---
 
@@ -132,7 +132,6 @@ wrangler deploy
 ```
 .
 ├── index.js          # 主入口（包含所有路由、业务逻辑、前端模板）
-├── wrangler.toml     # Cloudflare 配置
 └── README.md         # 你正在看的文档
 ```
 
@@ -186,29 +185,28 @@ wrangler dev
 
 ## 📸 效果截图
 
-> 以下为示意位置，你可将实际截图放在 `docs/` 目录下，并在此处引用。
-
 ### 前台首页
-![前台首页](./docs/homepage.png)  
+<img width="1902" height="886" alt="屏幕截图 2026-07-18 090226" src="https://github.com/user-attachments/assets/562e8c32-4e2e-424c-be52-eea5d7583122" />
+<img width="1920" height="888" alt="屏幕截图 2026-07-18 090248" src="https://github.com/user-attachments/assets/67ced63a-f3b7-4934-924d-d0bdd9bde95e" />
 *毛玻璃设计，清爽干净，一页展示所有分类。*
 
 ### 后台管理概览
-![后台概览](./docs/admin-dashboard.png)  
+<img width="1920" height="883" alt="屏幕截图 2026-07-18 090308" src="https://github.com/user-attachments/assets/d58e177a-96fc-495f-baf2-dbfc1d426d6e" />
 *总览统计 + 分类卡片拖拽排序，所见即所得。*
 
 ### 链接管理表格
-![链接管理](./docs/admin-links.png)  
+<img width="1900" height="670" alt="屏幕截图 2026-07-18 090343" src="https://github.com/user-attachments/assets/a2185303-524c-4960-a8ee-6d97a69f0539" />
 *支持分页、搜索、筛选，且拖拽行即可调整排序。*
 
 ### 站点设置
-![站点设置](./docs/admin-settings.png)  
+<img width="1891" height="841" alt="屏幕截图 2026-07-18 090505" src="https://github.com/user-attachments/assets/235ccc30-8fe0-40bb-a7e6-a486d90d14d2" />
 *实时修改站名、图标、背景图等，无需重新部署。*
 
 ---
 
 ## 📜 许可证
 
-MIT © [你的名字](https://github.com/your-username)
+MIT © [luochen-zhang](https://github.com/luochen-zhang)
 
 ---
 
